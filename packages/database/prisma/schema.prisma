@@ -1,0 +1,49 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id String @id @unique
+
+  email String? @unique
+}
+
+model Guild {
+  id String @id @unique
+
+  reactionBoards ReactionBoard[]
+}
+
+model ReactionBoard {
+  id String @id @default(cuid())
+
+  guild   Guild  @relation(fields: [guildId], references: [id])
+  guildId String
+
+  emoji     String
+  channelId String
+
+  minReactions Int
+
+  messages ReactionBoardMessage[]
+
+  @@index([guildId, emoji])
+}
+
+model ReactionBoardMessage {
+  id String @id @default(cuid())
+
+  reactionBoard   ReactionBoard @relation(fields: [reactionBoardId], references: [id])
+  reactionBoardId String
+
+  messageId      String
+  boardMessageId String
+
+  @@index([reactionBoardId, messageId])
+}

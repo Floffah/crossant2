@@ -1,0 +1,35 @@
+{
+  "name": "@crossant/bot",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "start": "bun run src/index.ts"
+  },
+  "devDependencies": {
+    "@crossant/eslint-config": "workspace:*",
+    "@types/lodash": "^4.14.200",
+    "@types/nodemon": "^1.19.4",
+    "bun-types": "^1.0.7",
+    "eslint": "^8.52.0",
+    "nodemon": "^3.0.1",
+    "source-map-support": "^0.5.21",
+    "tsup": "^7.2.0",
+    "typed-emitter": "^2.1.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@crossant/database": "workspace:*",
+    "alphacounter": "^1.2.1",
+    "chrono-node": "^2.7.0",
+    "date-fns": "^2.30.0",
+    "discord.js": "^14.13.0",
+    "dotenv": "^16.3.1",
+    "eventemitter3": "^5.0.1",
+    "lodash": "^4.17.21",
+    "loglevel": "^1.8.1",
+    "nanoid": "^5.0.2",
+    "reflect-metadata": "^0.1.13",
+    "zod": "^3.22.4"
+  }
+}

@@ -1,0 +1,28 @@
+services:
+  - type: worker
+    name: crossant-bot
+    runtime: docker
+    dockerfilePath: ./apps/bot/Dockerfile
+    dockerContext: ./
+    plan: starter
+    envVars:
+      - key: DIRECT_DATABASE_URL
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: DISCORD_TOKEN
+        sync: false
+      - key: OWNER
+        value: 221524691079266314
+      - key: TEST_GUILD_ID
+        value: 872068506886217790
+    disk:
+      name: data
+      mountPath: /data
+      sizeGB: 5
+
+databases:
+  - name: crossant-db
+    region: oregon
+    plan: starter
+    databaseName: crossant
